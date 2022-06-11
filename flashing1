@@ -1,0 +1,18 @@
+void setup() {
+  pinMode(13, OUTPUT);
+  digitalWrite(13, LOW); 
+}
+
+uint32_t ms, ms1 = 0;
+bool led_stat    = true;
+
+void loop() {
+   ms = millis();
+// Событие срабатывающее каждые 500 мс   
+   if( ( ms - ms1 ) > 500 || ms < ms1 ){
+       ms1 = ms;
+// Инвертируем светодиод       
+       digitalWrite(13, led_stat); 
+       led_stat = !led_stat;
+   }
+}
